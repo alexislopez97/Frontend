@@ -1,0 +1,40 @@
+<div class="lista" *ngFor='let auto of autos'>
+    <i class="fa fa-eye" (click)="onSelect(modal, auto)"></i>
+    <span>{{auto.descripcion}}</span>
+</div>
+
+<ng-template #modal let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Automovil</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <form>
+            <div class="form-group">
+                <label for="marca">Marca</label>
+                <div class="input-group">
+                    <input type="text" [ngModel]="autoSeleccionado.marca" id="marca" class="form-control" name="marca">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="submarca">Submarca</label>
+                <div class="input-group">
+                    <input type="text" [ngModel]="autoSeleccionado.submarca" id="submarca" class="form-control"
+                        name="submarca">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="modelo">Modelo</label>
+                <div class="input-group">
+                    <input type="text" [ngModel]="autoSeleccionado.modelo" id="modelo" class="form-control"
+                        name="modelo">
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Okey</button>
+    </div>
+</ng-template>

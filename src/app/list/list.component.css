@@ -1,0 +1,22 @@
+.lista{
+    background: #dfdfdf;
+    width: 90%;
+    height: 50px;
+    border-radius: 5px;
+    margin: auto;
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+i{
+    color: black;
+    font-size: 25px;
+    margin: 30px;
+}
+
+span{
+    margin: 30px;
+    font-weight: bold;
+}
