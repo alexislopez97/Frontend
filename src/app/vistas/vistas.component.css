@@ -35,4 +35,6 @@
      background:#fa9158;
  }
 
-
+ nav a.active{
+    background: #fa9158;
+ }
