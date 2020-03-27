@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {Automovil} from '../models';
-import { AUTOMOVILES } from '../data';
+import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+import { AutosService } from '../service/autos.service';
+
 
 @Component({
   selector: 'app-table',
@@ -10,10 +12,14 @@ import { AUTOMOVILES } from '../data';
 export class TableComponent implements OnInit {
 
   autos: Automovil[];
-  constructor() { }
+  page = 1;
+  pageSize  = 10;
+  constructor(private modalService: NgbModal, private autoService: AutosService){ }
 
   ngOnInit(): void {
-    this.autos = AUTOMOVILES;
+    this.autoService.getAutos().subscribe((response)=>{
+      this.autos = response.data;  
+    });
   }
 
 }

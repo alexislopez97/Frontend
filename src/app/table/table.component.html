@@ -1,15 +1,14 @@
+
 <table class="table table-striped">
     <thead>
     <tr>
-      <th scope="col">#</th>
       <th scope="col">Marca</th>
       <th scope="col">Submarca</th>
       <th scope="col">Modelo</th>
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let auto of autos; index as i">
-      <th scope="row">{{ i + 1 }}</th>
+    <tr *ngFor="let auto of autos | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize">
       <td>
         {{ auto.marca }}
       </td>
@@ -18,3 +17,8 @@
     </tr>
     </tbody>
   </table>
+  <ngb-pagination
+  [(page)]="page"
+  [pageSize]="pageSize"
+  [collectionSize]="autos.length"></ngb-pagination>
+  

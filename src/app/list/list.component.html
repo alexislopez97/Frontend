@@ -1,7 +1,12 @@
-<div class="lista" *ngFor='let auto of autos'>
+<div class="lista" *ngFor='let auto of autos | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize'>
     <i class="fa fa-eye" (click)="onSelect(modal, auto)"></i>
     <span>{{auto.descripcion}}</span>
 </div>
+
+<ngb-pagination
+  [(page)]="page"
+  [pageSize]="pageSize"
+  [collectionSize]="autos.length"></ngb-pagination>
 
 <ng-template #modal let-modal>
     <div class="modal-header">
