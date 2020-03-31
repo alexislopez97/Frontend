@@ -1,24 +1,27 @@
-
-<table class="table table-striped">
+<div class="contenedor">
+  <button type="button" class="btn btn-dark agregar" (click)="openModalAgregar()">Agregar <i class="fa fa-plus"></i></button>
+  <table class="table table-striped">
     <thead>
-    <tr>
-      <th scope="col">Marca</th>
-      <th scope="col">Submarca</th>
-      <th scope="col">Modelo</th>
-    </tr>
+      <tr>
+        <th scope="col">id</th>
+        <th scope="col">Marca</th>
+        <th scope="col">Submarca</th>
+        <th scope="col">Modelo</th>
+      </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let auto of autos | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize">
-      <td>
-        {{ auto.marca }}
-      </td>
-      <td>{{ auto.submarca }}</td>
-      <td>{{ auto.modelo }}</td>
-    </tr>
+      <tr *ngFor="let auto of autos | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize; index as i">
+        <th scope="row">{{auto._id}}</th>
+        <td>
+          {{ auto.marca }}
+        </td>
+        <td>{{ auto.submarca }}</td>
+        <td>{{ auto.modelos }}</td>
+        <td (click)="openModalConfirmEliminar(auto)"><i class="fa fa-trash"></i></td>
+        <td (click)="openModalEditar(auto)"><i class="fa fa-edit"></i></td>
+      </tr>
     </tbody>
   </table>
-  <ngb-pagination
-  [(page)]="page"
-  [pageSize]="pageSize"
-  [collectionSize]="autos.length"></ngb-pagination>
-  
+  <ngb-pagination [(page)]="page" [pageSize]="pageSize" [collectionSize]="autos?.length"></ngb-pagination>
+
+</div>

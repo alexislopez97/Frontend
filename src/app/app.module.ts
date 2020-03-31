@@ -12,6 +12,8 @@ import { ListComponent } from './list/list.component';
 import { TableComponent } from './table/table.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ModalAddUpdateComponent } from './modals/modal-add-update/modal-add-update.component';
+import { ModalConfirmActionComponent } from './modals/modal-confirm-action/modal-confirm-action.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +23,8 @@ import { HttpClientModule } from '@angular/common/http';
     ListComponent,
     TableComponent,
     PageNotFoundComponent,
+    ModalAddUpdateComponent,
+    ModalConfirmActionComponent,
   ],
   imports: [
     BrowserModule,
@@ -30,6 +34,7 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [ModalAddUpdateComponent]
 })
 export class AppModule { }

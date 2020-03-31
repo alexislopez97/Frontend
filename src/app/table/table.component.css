@@ -1,5 +1,10 @@
-table{
+.contenedor{
     margin: auto;
     margin-top: 50px;
     width: 80%;
 }
+
+.agregar{
+    margin-bottom: 20px;
+}
+
