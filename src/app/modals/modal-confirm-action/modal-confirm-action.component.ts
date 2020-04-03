@@ -9,6 +9,9 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 })
 export class ModalConfirmActionComponent implements OnInit {
 
+  
+  mensaje: string;
+
   auto: Automovil = {} as Automovil;
 
   constructor(public activeModal: NgbActiveModal) { }

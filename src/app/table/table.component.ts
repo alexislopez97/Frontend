@@ -49,28 +49,24 @@ export class TableComponent implements OnInit {
   }
 
   openModalConfirmEliminar(auto: Automovil){
-    const modalRef = this.modalService.open(ModalConfirmActionComponent, { centered: true})
+    const modalRef = this.modalService.open(ModalConfirmActionComponent, { centered: true })
     modalRef.componentInstance.auto = auto;
     modalRef.result.then(
       (autoTemp) => {
-        this.autoService.delateAuto(autoTemp).subscribe(response => {
-          console.log("Se ha eliminado correctamente el auto");
-          console.log(response);
+          this.autoService.delateAuto(autoTemp).subscribe(response => {
           sessionStorage.setItem('currentPage', this.page.toString());
           this.ngOnInit();
-        })
+        });
       },
       (reason) => {
-        console.log(reason);
+        console.log(reason)
       }
     )
   }
 
   openModalAgregar(){
     const modalRef = this.modalService.open(ModalAddUpdateComponent, { centered: true});
-    modalRef.componentInstance.auto = this.autos;
     modalRef.componentInstance.accion = 'Agregar';
-
     modalRef.result.then(
       (auto)=>{
         this.autoService.addAuto(auto).subscribe(response => {

@@ -10,7 +10,7 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 export class ModalAddUpdateComponent implements OnInit {
 
   accion: string;
-  auto: Automovil;
+  auto: Automovil = {} as Automovil;
 
   constructor(public activeModal: NgbActiveModal) { }
 
