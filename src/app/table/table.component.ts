@@ -14,13 +14,20 @@ import { ModalConfirmActionComponent } from '../modals/modal-confirm-action/moda
 export class TableComponent implements OnInit {
 
   autos: Automovil[];
-  page = 1;
-  pageSize  = 10;
+  page : number;
+  pageSize : number;
+  displayProgressBar: boolean;
   constructor(private modalService: NgbModal, private autoService: AutosService){ }
 
-  ngOnInit(): void {
+  ngOnInit() {
+    this.displayProgressBar = true;
+    this.pageSize = 10;
+    this.page = +sessionStorage.getItem('currentPage');
     this.autoService.getAutos().subscribe((response)=>{
-      this.autos = response.data;  
+      setTimeout(() => {
+        this.displayProgressBar = false;
+        this.autos = response.data;  
+      }, 1000);
     });
   }
 
@@ -31,7 +38,11 @@ export class TableComponent implements OnInit {
 
     modalRef.result.then(
       (auto)=>{
-        this.autoService.updateAuto(auto).subscribe(response => console.log(response));
+        this.autoService.updateAuto(auto).subscribe(response => {
+          console.log(response);
+          sessionStorage.setItem('currentPage', this.page.toString());
+          this.ngOnInit();
+        });
       }
     );
   }
@@ -44,6 +55,8 @@ export class TableComponent implements OnInit {
         this.autoService.delateAuto(autoTemp).subscribe(response => {
           console.log("Se ha eliminado correctamente el auto");
           console.log(response);
+          sessionStorage.setItem('currentPage', this.page.toString());
+          this.ngOnInit();
         })
       },
       (reason) => {
@@ -59,7 +72,13 @@ export class TableComponent implements OnInit {
 
     modalRef.result.then(
       (auto)=>{
-        this.autoService.addAuto(auto).subscribe(response => console.log(response));
+        this.autoService.addAuto(auto).subscribe(response => {
+          sessionStorage.setItem('currentPage', this.page.toString());
+          this.ngOnInit();
+        });
+      },
+      (reason) => {
+        console.log(reason);
       }
     );
   }

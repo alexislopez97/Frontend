@@ -10,13 +10,18 @@
       </tr>
     </thead>
     <tbody>
+      <tr *ngIf= "displayProgressBar">
+        <th colspan='5'>
+          <ngb-progressbar type="dark" [value]="100" [striped]= true [animated]= true></ngb-progressbar>
+        </th>
+      </tr>
       <tr *ngFor="let auto of autos | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize; index as i">
         <th scope="row">{{auto._id}}</th>
         <td>
           {{ auto.marca }}
         </td>
         <td>{{ auto.submarca }}</td>
-        <td>{{ auto.modelos }}</td>
+        <td>{{ auto.modelos | formatoModelos }}</td>
         <td (click)="openModalConfirmEliminar(auto)"><i class="fa fa-trash"></i></td>
         <td (click)="openModalEditar(auto)"><i class="fa fa-edit"></i></td>
       </tr>

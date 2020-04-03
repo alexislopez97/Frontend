@@ -14,6 +14,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { HttpClientModule } from '@angular/common/http';
 import { ModalAddUpdateComponent } from './modals/modal-add-update/modal-add-update.component';
 import { ModalConfirmActionComponent } from './modals/modal-confirm-action/modal-confirm-action.component';
+import { FormatoModelosPipe } from './pipes/formato-modelos.pipe';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { ModalConfirmActionComponent } from './modals/modal-confirm-action/modal
     PageNotFoundComponent,
     ModalAddUpdateComponent,
     ModalConfirmActionComponent,
+    FormatoModelosPipe,
   ],
   imports: [
     BrowserModule,
