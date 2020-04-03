@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
-
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -15,6 +15,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ModalAddUpdateComponent } from './modals/modal-add-update/modal-add-update.component';
 import { ModalConfirmActionComponent } from './modals/modal-confirm-action/modal-confirm-action.component';
 import { FormatoModelosPipe } from './pipes/formato-modelos.pipe';
+import { LogComponent } from './log/log.component';
 
 @NgModule({
   declarations: [
@@ -27,13 +28,15 @@ import { FormatoModelosPipe } from './pipes/formato-modelos.pipe';
     ModalAddUpdateComponent,
     ModalConfirmActionComponent,
     FormatoModelosPipe,
+    LogComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    Ng2SearchPipeModule
   ],
   providers: [],
   bootstrap: [AppComponent],

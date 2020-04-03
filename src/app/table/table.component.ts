@@ -17,6 +17,7 @@ export class TableComponent implements OnInit {
   page : number;
   pageSize : number;
   displayProgressBar: boolean;
+  searchText;
   constructor(private modalService: NgbModal, private autoService: AutosService){ }
 
   ngOnInit() {

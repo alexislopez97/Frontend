@@ -1,26 +1,41 @@
 <div class="contenedor">
   <button type="button" class="btn btn-dark agregar" (click)="openModalAgregar()">Agregar <i class="fa fa-plus"></i></button>
+  
+  <div class="input-group">
+    <div class="input-group-prepend">
+      <div class="input-group-text">
+        <i class="fa fa-search"></i>
+      </div>
+    </div>
+    <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Que deseas buscar?" 
+      [(ngModel)]= "searchText" autocomplete="off">
+  </div>
+
   <table class="table table-striped">
     <thead>
       <tr>
         <th scope="col">id</th>
         <th scope="col">Marca</th>
         <th scope="col">Submarca</th>
+        <th scope="col">Descripcion</th>
         <th scope="col">Modelo</th>
       </tr>
     </thead>
     <tbody>
+
       <tr *ngIf= "displayProgressBar">
         <th colspan='5'>
           <ngb-progressbar type="dark" [value]="100" [striped]= true [animated]= true></ngb-progressbar>
         </th>
       </tr>
-      <tr *ngFor="let auto of autos | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize; index as i">
+
+      <tr *ngFor="let auto of autos | filter:searchText | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize; index as i">
         <th scope="row">{{auto._id}}</th>
         <td>
           {{ auto.marca }}
         </td>
         <td>{{ auto.submarca }}</td>
+        <td>{{ auto.descripcion }}</td>
         <td>{{ auto.modelos | formatoModelos }}</td>
         <td (click)="openModalConfirmEliminar(auto)"><i class="fa fa-trash"></i></td>
         <td (click)="openModalEditar(auto)"><i class="fa fa-edit"></i></td>
